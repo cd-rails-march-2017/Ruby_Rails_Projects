@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'event#index'
 
 # User GET Requests
   get 'user/index'
@@ -19,23 +20,20 @@ Rails.application.routes.draw do
 
 # Event POST Requests
   post 'event/create'
+  post 'event/update/:id' => "event#update"
 
-#Attendee GET Requests
+# Attendee GET Requests
   get 'attendee/join/:id' => 'attendee#join'
   get 'attendee/cancel/:id'=> 'attendee#cancel'
   #Is it bad practice to do this with a GET Method??? I am using an href link to direct here....
 
-#Message Post Requests
-post 'message/create'
-
-
-
+# Message Post Requests
+  post 'message/create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'event#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

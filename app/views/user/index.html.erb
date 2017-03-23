@@ -23,8 +23,8 @@
       <option value="IL">IL</option>
     </select>
     </p>
-    <p>Password: <input type="text" name="user[password]" value=""></p>
-    <p>Confirm PW: <input type="text" name="" value=""></p>
+    <p>Password: <input type="password" name="user[password]" value=""></p>
+    <p>Confirm PW: <input type="password" name="" value=""></p>
     <input type="submit" value="Register">
   </form>
 </div>
@@ -38,7 +38,7 @@
   <form class="" action="/user/login" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <p>Email: <input type="text" name="user[email]" value=""></p>
-    <p>Password: <input type="text" name="user[password]" value=""></p>
+    <p>Password: <input type="password" name="user[password]" value=""></p>
     <input type="submit" value="Login">
   </form>
 </div>

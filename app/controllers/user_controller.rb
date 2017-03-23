@@ -1,8 +1,7 @@
 class UserController < ApplicationController
   def index
-# WHY IS THIS SESSION LOGIC NOT WORKING RIGHT NOW???
     if session[:id].nil?
-      redirect_to '/user/index'
+      #render the HTML page
     else
       redirect_to '/event/index'
     end

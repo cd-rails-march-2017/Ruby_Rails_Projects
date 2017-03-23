@@ -1,6 +1,6 @@
 class EventController < ApplicationController
   def index
-    # Why is this session logic not working???
+    ### Why is this session logic not working???
     if session[:id].nil?
       redirect_to '/user/index'
     else
@@ -14,8 +14,6 @@ class EventController < ApplicationController
     @event = Event.find(params[:id])
     @messages = Message.all
     @attendees = Attendee.where(event_id: params[:id])
-    puts "$" * 50
-    puts @attendees
   end
 
   def create
@@ -25,10 +23,19 @@ class EventController < ApplicationController
     redirect_to '/event/index'
   end
 
-  ### Need to get edit populating...in event/index page...can I do a redirect like this while passing an attribute?
+  ### Is this bad practice using a get route and rendering the html and redoing the "attributes " when making an edit to an event???
   def edit
-    @eventedit = Event.find(params[:id])
-    redirect_to '/event/index'
+    @user = User.find(session[:id])
+    @events = Event.where(state: @user.state)
+    @otherevents = Event.where.not(state: @user.state)
+    @event_edit = Event.find(params[:id])
+    render 'event/index'
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    @event.update(event_info)
+    redirect_to "/event/index"
   end
 
   def delete
